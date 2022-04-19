@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
-@Component
+//@Component
 public class DataLoader implements CommandLineRunner {
 
     @Autowired

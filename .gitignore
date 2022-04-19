@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-### database H2 ###
-/home/neto/projeto_pa1/spring_security/database/
+/home/neto/projeto_pa1/spring_security/database/db.mv.db

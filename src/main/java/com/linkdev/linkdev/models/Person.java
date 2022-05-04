@@ -1,7 +1,10 @@
 package com.linkdev.linkdev.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "persons")
 abstract public class Person {
@@ -39,6 +42,10 @@ abstract public class Person {
 
     @Column(length = 100, nullable = false)
     private String complement;
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getName() {
         return name;

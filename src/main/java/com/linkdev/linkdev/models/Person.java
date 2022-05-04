@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "persons")
-public class Person {
+abstract public class Person {
+
+    public Person() { }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,15 +39,6 @@ public class Person {
 
     @Column(length = 100, nullable = false)
     private String complement;
-
-    public Person(String name, String contact_email) {
-        this.name = name;
-        this.contact_email = contact_email;
-    }
-
-    public Person() {
-
-    }
 
     public String getName() {
         return name;

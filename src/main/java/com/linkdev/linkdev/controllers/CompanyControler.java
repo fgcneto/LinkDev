@@ -38,7 +38,7 @@ public class CompanyControler {
     }
 
     @PutMapping(path = {"/{id}"})
-    public ResponseEntity<Company> update(@PathVariable Long id, @RequestBody Company company) {
+    public ResponseEntity<Company> Entityupdate(@PathVariable Long id, @RequestBody Company company) {
         return companyService.findById(id).map( record -> {
             companyService.add(company);
             return ResponseEntity.ok().body(company);

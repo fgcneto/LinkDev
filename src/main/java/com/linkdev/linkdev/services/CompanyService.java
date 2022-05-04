@@ -22,23 +22,11 @@ public class CompanyService {
         return companyRepository.save(company);
     }
 
-    public Company update(Company company) {
-        return companyRepository.save(company);
-    }
-
     public void delete(Company company) {
         companyRepository.delete(company);
     }
 
-    public void deleteById(Long id) {
-        companyRepository.deleteById(id);
-    }
-
-    public Company findOne(Long id) {
-        return companyRepository.findById(id).orElse(null);
-    }
-
-    public Optional<Company> findById(Long id) {
+     public Optional<Company> findById(Long id) {
         return companyRepository.findById(id);
     }
 

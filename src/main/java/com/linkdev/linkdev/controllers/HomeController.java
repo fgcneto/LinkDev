@@ -23,6 +23,6 @@ public class HomeController {
 
     @RequestMapping("/secure")
     public String secure(){
-        return "secure";
+        return "index";
     }
 }

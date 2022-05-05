@@ -29,4 +29,5 @@ public class Company extends Person{
     public void setContact(String contact) {
         this.contact = contact;
     }
+
 }

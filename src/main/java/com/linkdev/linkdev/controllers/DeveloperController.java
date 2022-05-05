@@ -1,6 +1,5 @@
 package com.linkdev.linkdev.controllers;
 
-import com.linkdev.linkdev.models.Company;
 import com.linkdev.linkdev.models.Developer;
 import com.linkdev.linkdev.services.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;

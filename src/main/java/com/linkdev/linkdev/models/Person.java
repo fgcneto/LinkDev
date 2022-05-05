@@ -7,9 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "persons")
-abstract public class Person {
-
-    public Person() { }
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +40,7 @@ abstract public class Person {
 
     @Column(length = 100, nullable = false)
     private String complement;
+
 
     public Long getId() { return id; }
 

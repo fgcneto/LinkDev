@@ -25,4 +25,10 @@ public class HomeController {
     public String secure(){
         return "index";
     }
+
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
+    }
+
 }

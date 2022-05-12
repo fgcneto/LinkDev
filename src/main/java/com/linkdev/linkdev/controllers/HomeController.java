@@ -25,8 +25,4 @@ public class HomeController {
     public String secure(){
         return "index";
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> front
 }

@@ -29,7 +29,7 @@
                         <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></p>
                         Username: <input class="form-control" type="text" th:field="*{username}"> <br/>
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">SEND</button>
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold" style="padding: 8px 120px" type="submit">SEND</button>
                         <hr class="my-4">
                         <a class="d-block text-center mt-2 small text-center" href="/login">Have an account? Sign In</a>
                     </form>

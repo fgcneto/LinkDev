@@ -35,7 +35,7 @@ public class UserController {
            return "redirect:/register";
         }else{
             userService.save(user);
-            return "redirect:/";
+            return "redirect:/login";
         }
 
     }

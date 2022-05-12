@@ -2,11 +2,12 @@ package com.linkdev.linkdev.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login")
     public String login(){
         return "login";
     }
@@ -25,8 +26,4 @@ public class HomeController {
     public String secure(){
         return "index";
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> front
 }

@@ -35,6 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+<<<<<<< HEAD
 
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
@@ -49,6 +50,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
         /*
+=======
+>>>>>>> a7f85ac2dde01b9f25a6f0c5de71f2fba958aecf
         http.authorizeRequests()
                 .antMatchers("/register", "/h2-console/**").permitAll()
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
@@ -62,8 +65,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.headers().frameOptions().disable();
+<<<<<<< HEAD
         */
 
+=======
+>>>>>>> a7f85ac2dde01b9f25a6f0c5de71f2fba958aecf
     }
 
     @Override

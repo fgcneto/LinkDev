@@ -35,47 +35,30 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-<<<<<<< HEAD
 
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
+//                .anyRequest() // para qualquer requisição
+//                .authenticated() // exigência de autenticação
                 .and().formLogin().loginPage("/register").permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
+                .defaultSuccessUrl("/index.html", true) // página de destino após um login bem-sucedido
+                .failureUrl("/login.html?error=true") // página de destino após um login malsucedido
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login").permitAll()
                 .and()
                 .httpBasic();
+        http.logout(logout -> logout.deleteCookies("JSESSIONID"));
         http.csrf().disable();
         http.headers().frameOptions().disable();
 
-        /*
-=======
->>>>>>> a7f85ac2dde01b9f25a6f0c5de71f2fba958aecf
-        http.authorizeRequests()
-                .antMatchers("/register", "/h2-console/**").permitAll()
-                .antMatchers("/admin").access("hasAuthority('ADMIN')")
-                .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll()
-                .and()
-                .httpBasic();
-
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
-<<<<<<< HEAD
-        */
-
-=======
->>>>>>> a7f85ac2dde01b9f25a6f0c5de71f2fba958aecf
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsServiceBean())
-                .passwordEncoder(passwordEncoder());
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsServiceBean())
+//                .passwordEncoder(passwordEncoder());
+//    }
 
 }

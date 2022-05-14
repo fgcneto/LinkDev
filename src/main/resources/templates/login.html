@@ -8,25 +8,30 @@
 
 <div th:include="fragments/commons :: linkBootstrap"></div>
 
-<div th:if="${param.logout}">
-    Você está desconectado
-</div>
 <br/>
 <br/>
 <br/>
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Usuário ou senha Inválidos!</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-info">Desconectado com Sucesso!</div>
+            </div>
+
             <div class="card border-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
                     <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Sign In</h2>
                     <form th:action="@{/login}" method="post">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="username" id="floatingInput" placeholder="User name">
+                            <input type="text" class="form-control" name="username" id="floatingInput" placeholder="User name" required>
                             <label for="floatingInput">User name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
 

@@ -1,3 +1,0 @@
-2022-04-18 23:56:53 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CNPJ[*] USERS_ROLES"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
-CNPJ USERS_ROLES [42001-200]

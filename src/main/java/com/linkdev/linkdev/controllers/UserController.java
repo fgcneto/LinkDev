@@ -32,7 +32,7 @@ public class UserController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String doSave(@ModelAttribute @Valid User user, Errors errors){
         if(errors.hasErrors()){
-           return "redirect:/register";
+            return "redirect:/register";
         }else{
             userService.save(user);
             return "redirect:/login";

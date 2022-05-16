@@ -1,11 +1,15 @@
 package com.linkdev.linkdev.models;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -36,10 +40,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(){
-
-    }
-
     public User(String email, String password, String name, String last_name, boolean enabled, String username) {
         this.email = email;
         this.password = password;
@@ -49,25 +49,6 @@ public class User {
         this.username = username;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

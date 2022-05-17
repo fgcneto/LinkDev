@@ -13,16 +13,15 @@ import java.util.Arrays;
 
 @Service
 public class UserService {
-    private UserRepositoryJpa userRepositoryJpa;
-    private RoleRepository roleRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
-        this.userRepositoryJpa = userRepositoryJpa;
+        this.userRepository = userRepository;
     }
 
     public void save(User user){
-        userRepositoryJpa.save(user);
+        userRepository.save(user);
     }
 
 }

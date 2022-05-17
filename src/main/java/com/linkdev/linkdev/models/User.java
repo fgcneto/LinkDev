@@ -1,10 +1,16 @@
 package com.linkdev.linkdev.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
 
+
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "users")
 public class User {
@@ -13,11 +19,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "enable")
+    private boolean enabled;
+
     @Column(name="email", nullable = false)
     private String email;
-
-    @Column(name = "password")
-    private String password;
 
     @Column(name = "name")
     private String name;
@@ -25,11 +31,12 @@ public class User {
     @Column(name="last_name")
     private String last_name;
 
-    @Column(name = "enable")
-    private boolean enabled;
-
     @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
+    private String password;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
@@ -44,6 +51,22 @@ public class User {
         this.last_name = last_name;
         this.enabled = enabled;
         this.username = username;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

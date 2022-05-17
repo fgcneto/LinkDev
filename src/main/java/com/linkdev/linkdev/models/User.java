@@ -36,10 +36,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(){
-
-    }
-
+    public User(){}
     public User(String email, String password, String name, String last_name, boolean enabled, String username) {
         this.email = email;
         this.password = password;
@@ -47,31 +44,6 @@ public class User {
         this.last_name = last_name;
         this.enabled = enabled;
         this.username = username;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
     }
 
     public String getName() {
@@ -104,6 +76,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
     }
 
     public Collection<Role> getRoles() {

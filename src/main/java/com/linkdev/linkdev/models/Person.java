@@ -1,13 +1,21 @@
 package com.linkdev.linkdev.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Data
-@Entity
-@Table(name = "persons")
-public class Person {
+@MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"})
+public abstract class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,30 +23,32 @@ public class Person {
     private Long id;
 
     @Column(length = 250, nullable = false)
+    @NotBlank(message = "O nome deve ser preenchido")
+    @Size(min = 2, max = 250, message = "O nome deve conter entre 2 e no máximo 250 caracteres")
     private String name;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String contact_email;
 
-    @Column(length = 9, nullable = false)
+    @Column(length = 9)
     private String cell_phone;
 
-    @Column(length = 9, nullable = false)
+    @Column(length = 9)
     private String telephone;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String street;
 
-    @Column(length = 8, nullable = false)
+    @Column(length = 8)
     private String zip_code;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String city;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String state;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String complement;
 
 

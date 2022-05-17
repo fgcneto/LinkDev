@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body style="background: #007bff; background: linear-gradient(to right, #0062E6, #33AEFF);">
+<div th:include="fragments/commons :: linkBootstrap"></div>
+
+<br/>
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Sign Up</h2>
+                    <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
+                        Email: <input class="form-control" type="email" th:field="*{email}"> <br/>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        Password: <input class="form-control" type="password" th:field="*{password}"> <br/>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        Name: <input class="form-control" type="text" th:field="*{name}"> <br/>
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        Last Name: <input class="form-control" type="text" th:field="*{last_name}"> <br/>
+                        <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></p>
+<!--                        Enable: <input class="form-control" type="text" th:field="*{enabled}"> <br/>-->
+<!--                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></p>-->
+                        Username: <input class="form-control" type="text" th:field="*{username}"> <br/>
+                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold" style="padding: 8px 120px" type="submit">SEND</button>
+                        <hr class="my-4">
+                        <a class="d-block text-center mt-2 small text-center" href="/login">Have an account? Sign In</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div th:include="fragments/commons :: foot"></div>
+</html>

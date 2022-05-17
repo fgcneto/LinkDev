@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,30 +36,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
-//                .anyRequest() // para qualquer requisição
-//                .authenticated() // exigência de autenticação
-                .and().formLogin().loginPage("/register").permitAll()
-                .and().formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/index.html", true) // página de destino após um login bem-sucedido
-                .failureUrl("/login.html?error=true") // página de destino após um login malsucedido
+                .anyRequest().authenticated()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll()
-                .and()
-                .httpBasic();
-        http.logout(logout -> logout.deleteCookies("JSESSIONID"));
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
-
+                .formLogin().loginPage("/login")
+                .failureUrl("/login") // página de destino após um login malsucedido
+                .permitAll();
     }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsServiceBean())
-//                .passwordEncoder(passwordEncoder());
-//    }
-
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsServiceBean())
+                .passwordEncoder(passwordEncoder());
+    }
 }

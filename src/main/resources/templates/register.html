@@ -25,8 +25,8 @@
                         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                         Last Name: <input class="form-control" type="text" th:field="*{last_name}"> <br/>
                         <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></p>
-                        Enable: <input class="form-control" type="text" th:field="*{enabled}"> <br/>
-                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></p>
+<!--                        Enable: <input class="form-control" type="text" th:field="*{enabled}"> <br/>-->
+<!--                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></p>-->
                         Username: <input class="form-control" type="text" th:field="*{username}"> <br/>
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                         <button class="btn btn-primary btn-login text-uppercase fw-bold" style="padding: 8px 120px" type="submit">SEND</button>

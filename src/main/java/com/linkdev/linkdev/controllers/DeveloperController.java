@@ -1,17 +1,23 @@
 package com.linkdev.linkdev.controllers;
 
 import com.linkdev.linkdev.models.Developer;
+import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.services.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
-@RequestMapping("/developer")
+//@RestController
+//@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
+@Controller
+//@RequestMapping("/developer")
 public class DeveloperController {
 
     private DeveloperService developerService;
@@ -21,6 +27,27 @@ public class DeveloperController {
         this.developerService = developerService;
     }
 
+
+    @RequestMapping("/developer")
+    public String getFormDeveloper(Model model){
+        Developer developer = new Developer();
+        model.addAttribute("developer",developer);
+        return "developer";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String doSaveDeveloper(@ModelAttribute @Valid Developer developer, Errors errors){
+        if(errors.hasErrors()){
+            return "redirect:/developer";
+        }else{
+            developerService.add(developer);
+            return "redirect:/login";
+        }
+
+    }
+
+
+/*
     @GetMapping
     public List<Developer> listAll(){
         return developerService.findAll();
@@ -57,4 +84,6 @@ public class DeveloperController {
             return ResponseEntity.status(202).build();
         }).orElse(ResponseEntity.notFound().build());
     }
+ */
+
 }

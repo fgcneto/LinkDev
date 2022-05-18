@@ -29,11 +29,13 @@ public class Developer extends Person{
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date birth_date;
 
+    @Column
+    private byte resume;
+
     @OneToMany
     private List<Skill> skills;
 
-    @Column
-    private byte resume;
+
 
     public Developer(Long id,
                      @NotBlank(message = "O nome deve ser preenchido")

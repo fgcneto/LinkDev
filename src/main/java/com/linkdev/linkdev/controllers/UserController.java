@@ -29,7 +29,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String doSave(@ModelAttribute @Valid User user, Errors errors){
         if(errors.hasErrors()){
             return "redirect:/register";

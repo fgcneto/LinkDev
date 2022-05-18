@@ -15,23 +15,27 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
-                    <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Sign Up</h2>
-                    <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
-                        Email: <input class="form-control" type="email" th:field="*{email}"> <br/>
-                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-                        Password: <input class="form-control" type="password" th:field="*{password}"> <br/>
-                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-                        Name: <input class="form-control" type="text" th:field="*{name}"> <br/>
-                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-                        Last Name: <input class="form-control" type="text" th:field="*{last_name}"> <br/>
-                        <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></p>
-<!--                        Enable: <input class="form-control" type="text" th:field="*{enabled}"> <br/>-->
-<!--                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></p>-->
-                        Username: <input class="form-control" type="text" th:field="*{username}"> <br/>
-                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                        <button class="btn btn-primary btn-login text-uppercase fw-bold" style="padding: 8px 120px" type="submit">SEND</button>
+                    <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Cadastro</h2>
+                    <form method="post" th:object="${user}" th:action="@{/salvar}" enctype="multipart/form-data">
+                        Ativo: <input class="form-control" type="text" th:field="*{enabled}" required> <br/>
+                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}" th:required="required"></p>
+                        E-mail: <input class="form-control" type="email" th:field="*{email}" required> <br/>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:required="required"></p>
+                        Nome: <input class="form-control" type="text" th:field="*{name}" required> <br/>
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:required="required"></p>
+                        Sobrenome: <input class="form-control" type="text" th:field="*{last_name}" required> <br/>
+                        <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}" th:required="required"></p>
+                        Usuário: <input class="form-control" type="text" th:field="*{username}" required> <br/>
+                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:required="required"></p>
+                        Senha: <input class="form-control" type="password" id="pass1" th:field="*{password}" required> <br/>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:required="required"></p>
+
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-login text-uppercase fw-bold" >ENVIAR</button>
+                        </div>
                         <hr class="my-4">
-                        <a class="d-block text-center mt-2 small text-center" href="/login">Have an account? Sign In</a>
+                        <a class="d-block text-center mt-2 small text-center" href="/login">Já possui conta ? Faça login</a>
                     </form>
                 </div>
             </div>

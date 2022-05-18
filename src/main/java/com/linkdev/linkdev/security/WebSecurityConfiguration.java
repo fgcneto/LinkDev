@@ -36,12 +36,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /*
+
         http.authorizeRequests()
+                .antMatchers( "/h2-console/**","/register", "/developer").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
                 .failureUrl("/login") // página de destino após um login malsucedido
                 .permitAll();
+
+         */
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

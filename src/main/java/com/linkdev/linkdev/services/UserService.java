@@ -14,10 +14,9 @@ import java.util.Arrays;
 @Service
 public class UserService {
     private UserRepositoryJpa userRepositoryJpa;
-    private RoleRepository roleRepository;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
+    public void setUserRepositoryJpa(UserRepositoryJpa userRepositoryJpa) {
         this.userRepositoryJpa = userRepositoryJpa;
     }
 

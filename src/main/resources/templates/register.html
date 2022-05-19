@@ -19,15 +19,15 @@
                     <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
                         E-mail * : <input class="form-control" type="email" th:field="*{email}" style="" required> <br/>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:required="required"></p>
-                        Nome * : <input class="form-control" type="text" th:field="*{name}" required> <br/>
+                        Nome * : <input class="form-control" type="text" th:field="*{name}" minlength="3" required> <br/>
                         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:required="required"></p>
-                        Sobrenome * : <input class="form-control" type="text" th:field="*{last_name}" required> <br/>
+                        Sobrenome * : <input class="form-control" type="text" th:field="*{last_name}" minlength="3" required> <br/>
                         <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}" th:required="required"></p>
-                        Nome de usuário * : <input class="form-control" type="text" th:field="*{username}" required> <br/>
+                        Nome de usuário * : <input class="form-control" type="text" th:field="*{username}" minlength="3" required> <br/>
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:required="required"></p>
-                        Senha * : <input class="form-control" type="password" id="pass1" th:field="*{password}" required> <br/>
+                        Senha * : <input class="form-control" type="password" id="password" pattern="^(?=.*\d).{4,8}$"  th:field="*{password}" placeholder="4-8 caracter" required> <br/>
                         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:required="required"></p>
-                        Confirmar senha * : <input class="form-control" type="password" id="pass2" th:field="*{password}" required> <br/>
+                        Confirmar senha * : <input class="form-control" type="password" id="confirm_password" required> <br/>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-login text-uppercase fw-bold" >ENVIAR</button>
@@ -42,4 +42,20 @@
 </div>
 </body>
 <div th:include="fragments/commons :: foot"></div>
+
+<script>
+    let password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Senhas diferentes!");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 </html>

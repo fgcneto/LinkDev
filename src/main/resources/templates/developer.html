@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Register</title>
+  <title>Developer</title>
 </head>
 <body style="background: #007bff; background: linear-gradient(to right, #0062E6, #33AEFF);">
 <div th:include="fragments/commons :: linkBootstrap"></div>
@@ -15,10 +15,10 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
-          <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Continue seu cadastro Dev</h2>
+          <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Continue seu cadastro como Desenvolvedor</h2>
           <!--/*@thymesVar id="developer" type=""*/-->
           <form  method="post" th:object="${developer}" th:action="@{/add}" enctype="multipart/form-data" >
-            CPF: <input class="form-control" type="number" th:field="*{cpf}" required> <br/>
+            CPF: <input class="form-control" type="text" th:field="*{cpf}" required> <br/>
             <p th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" th:required="required"></p>
             Data de Nascimento:<input class="form-control" type="date" th:field="*{birth_date}" required> <br/>
             <p th:if="${#fields.hasErrors('birth_date')}" th:errors="*{birth_date}" th:required="required"></p>

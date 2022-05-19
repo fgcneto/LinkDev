@@ -17,19 +17,17 @@
                 <div class="card-body p-4 p-sm-5">
                     <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Cadastro</h2>
                     <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
-                        Ativo: <input class="form-control" type="text" th:field="*{enabled}" required> <br/>
-                        <p th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}" th:required="required"></p>
-                        E-mail: <input class="form-control" type="email" th:field="*{email}" required> <br/>
+                        E-mail * : <input class="form-control" type="email" th:field="*{email}" style="" required> <br/>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:required="required"></p>
-                        Nome: <input class="form-control" type="text" th:field="*{name}" required> <br/>
+                        Nome * : <input class="form-control" type="text" th:field="*{name}" required> <br/>
                         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:required="required"></p>
-                        Sobrenome: <input class="form-control" type="text" th:field="*{last_name}" required> <br/>
+                        Sobrenome * : <input class="form-control" type="text" th:field="*{last_name}" required> <br/>
                         <p th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}" th:required="required"></p>
-                        Usuário: <input class="form-control" type="text" th:field="*{username}" required> <br/>
+                        Nome de usuário * : <input class="form-control" type="text" th:field="*{username}" required> <br/>
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:required="required"></p>
-                        Senha: <input class="form-control" type="password" id="pass1" th:field="*{password}" required> <br/>
+                        Senha * : <input class="form-control" type="password" id="pass1" th:field="*{password}" required> <br/>
                         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:required="required"></p>
-
+                        Confirmar senha * : <input class="form-control" type="password" id="pass2" th:field="*{password}" required> <br/>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-login text-uppercase fw-bold" >ENVIAR</button>

@@ -12,10 +12,11 @@ public class HomeController {
     public String viewLoginPage() {
         return "login";
     }
-    @RequestMapping("/")
-    public String index(){
-        return "index";
-    }
+
+    //@RequestMapping("/")
+    //public String index(){
+    //   return "index";
+    //}
 
     @RequestMapping("/admin")
     public String admin(){
@@ -26,4 +27,10 @@ public class HomeController {
     public String secure(){
         return "index";
     }
+
+    @RequestMapping("/choose")
+    public String choose(){
+        return "choose";
+    }
+
 }

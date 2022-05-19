@@ -1,5 +1,6 @@
 package com.linkdev.linkdev.services;
 
+import com.linkdev.linkdev.models.Developer;
 import com.linkdev.linkdev.models.Role;
 import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.repository.RoleRepository;
@@ -19,6 +20,7 @@ public class DataLoader implements CommandLineRunner {
     RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
 
 
     @Override

@@ -4,23 +4,34 @@ import com.linkdev.linkdev.models.Company;
 import com.linkdev.linkdev.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
-@RequestMapping("/company")
+//@RestController
+//@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
+//@RequestMapping("/company")
+@Controller
 public class CompanyControler {
 
-    private CompanyService companyService;
+    private CompanyService service;
 
     @Autowired
-    public void setCompanyService(CompanyService companyService) {
-        this.companyService = companyService;
+    public void setService(CompanyService service) {
+        this.service = service;
     }
 
+    @RequestMapping({"/", "/index"})
+    public String getPageUsuario(Model model){
+        List<Company> companyList = service.findAll();
+        model.addAttribute("company", companyList);
+        return "index";
+    }
+
+    /*
     @GetMapping
     public List<Company> listAll(){
         return companyService.findAll();
@@ -57,5 +68,5 @@ public class CompanyControler {
             return ResponseEntity.status(202).build();
         }).orElse(ResponseEntity.notFound().build());
     }
-
+    */
 }

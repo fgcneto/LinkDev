@@ -16,8 +16,8 @@ import java.util.Optional;
 
 //@RestController
 //@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
-@Controller
 //@RequestMapping("/developer")
+@Controller
 public class DeveloperController {
 
     private DeveloperService developerService;
@@ -28,20 +28,20 @@ public class DeveloperController {
     }
 
 
-    @RequestMapping("/developer")
+    @RequestMapping("/dev")
     public String getFormDeveloper(Model model){
-        Developer developer = new Developer();
-        model.addAttribute("developer",developer);
-        return "developer";
+        Developer dev = new Developer();
+        model.addAttribute("dev",dev);
+        return "dev";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String doSaveDeveloper(@ModelAttribute @Valid Developer developer, Errors errors){
+    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
+    public String doSaveDeveloper(@ModelAttribute @Valid Developer dev, Errors errors){
         if(errors.hasErrors()){
-            return "redirect:/developer";
+            return "redirect:/dev";
         }else{
-            developerService.add(developer);
-            return "redirect:/login";
+            developerService.add(dev);
+            return "redirect:/register";
         }
 
     }

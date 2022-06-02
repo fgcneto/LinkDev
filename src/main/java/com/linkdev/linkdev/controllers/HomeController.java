@@ -3,7 +3,6 @@ package com.linkdev.linkdev.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -13,11 +12,6 @@ public class HomeController {
         return "login";
     }
 
-    //@RequestMapping("/")
-    //public String index(){
-    //   return "index";
-    //}
-
     @RequestMapping("/admin")
     public String admin(){
         return "admin";
@@ -25,7 +19,7 @@ public class HomeController {
 
     @RequestMapping("/secure")
     public String secure(){
-        return "index";
+        return "indexDev";
     }
 
     @RequestMapping("/choose")

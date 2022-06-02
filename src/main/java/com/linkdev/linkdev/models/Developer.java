@@ -26,6 +26,9 @@ public class Developer{
     @Column
     private String nameDev;
 
+    @Column
+    private String last_name;
+
     @Column(length = 11)
     private String cpf;
 
@@ -39,12 +42,9 @@ public class Developer{
     private String telephone;
 
     @Column
-    private byte resume;
+    private String resume;
 
     @OneToOne
     @JoinColumn(name = "userTipo")
     private User tipoUser;
-
-    @OneToMany
-    private List<Skill> skills;
 }

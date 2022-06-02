@@ -23,15 +23,6 @@ public class User {
     @Column(name = "enable")
     private boolean enabled = true;
 
-    @Column(name="email", nullable = false)
-    private String email;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name="last_name")
-    private String last_name;
-
     @Column(name = "username")
     private String username;
 
@@ -44,11 +35,8 @@ public class User {
 
     private Collection<Role> roles;
 
-    public User(boolean enabled, String email, String name, String last_name,  String username , String password) {
+    public User(boolean enabled, String username , String password) {
         this.enabled = enabled;
-        this.email = email;
-        this.name = name;
-        this.last_name = last_name;
         this.username = username;
         this.password = password;
     }
@@ -61,13 +49,6 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;
@@ -76,22 +57,6 @@ public class User {
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
     }
 
     public boolean isEnabled() {

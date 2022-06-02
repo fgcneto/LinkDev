@@ -1,12 +1,9 @@
 package com.linkdev.linkdev.controllers;
 
 import com.linkdev.linkdev.models.Company;
-import com.linkdev.linkdev.models.Developer;
-import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.services.CompanyService;
 import com.linkdev.linkdev.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 //@RestController
 //@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "X-Total-Count")
@@ -41,7 +37,7 @@ public class CompanyControler {
         model.addAttribute("company", companyList);
         //User aux = new User();  //
         //aux = userService.getById(); // devolver nome do user na tela
-        return "index";
+        return "indexDev";
     }
 
 
@@ -58,7 +54,7 @@ public class CompanyControler {
             return "redirect:/company";
         }else{
             service.add(company);
-            return "redirect:/login";
+            return "redirect:/register";
         }
 
     }

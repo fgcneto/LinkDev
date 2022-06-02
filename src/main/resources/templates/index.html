@@ -24,7 +24,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href=""></a>
                 </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">sair</a>
                 </li>
@@ -43,14 +42,20 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">cnpj</th>
-                    <th scope="col" >contato</th>
+                    <th scope="col">nome</th>
+                    <th scope="col" >cnpj</th>
+                    <th scope="col" >email de contato</th>
+                    <th scope="col" >link do site</th>
+                    <th scope="col" >rede social</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="eletro : ${company}" scope="row">
-                    <td th:text="${company}">cnpj</td>
-                    <td th:text="${company}">contato</td>
+                <tr th:each="company : ${company}" scope="row">
+                    <td th:text="${company.nameCompany}">nome</td>
+                    <td th:text="${company.cnpj}">cnpj</td>
+                    <td th:text="${company.contact_email}">email de contato</td>
+                    <td th:text="${company.linkSite}">link do site</td>
+                    <td th:text="${company.socialMidia}">rede social</td>
                 </tr>
                 </tbody>
             </table>

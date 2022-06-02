@@ -5,38 +5,36 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "companies")
-public class Company extends Person{
+public class Company{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  long idCompany;
+
+    @Column
+    private String nameCompany;
 
     @Column(length = 14)
     private String cnpj;
 
     @Column(length = 100)
-    private String contact;
+    private String contact_email;
 
-    public String getCnpj() {
-        return cnpj;
-    }
+    @Column
+    private String linkSite;
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+    @Column
+    private String socialMidia;
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
+    @OneToOne
+    @JoinColumn(name = "userTipo")
+    private User tipoUser;
 
 }

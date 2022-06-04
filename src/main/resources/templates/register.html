@@ -17,7 +17,7 @@
                 <div class="card-body p-4 p-sm-5">
                     <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Cadastro</h2>
                     <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
-                        E-mail * : <input class="form-control" type="email" th:field="*{email}" style="" required> <br/>
+                        E-mail * : <input class="form-control" type="email" th:field="*{email}" id="email" required> <br/>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:required="required"></p>
                         Nome * : <input class="form-control" type="text" th:field="*{name}" minlength="3" required> <br/>
                         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:required="required"></p>
@@ -54,8 +54,32 @@
             confirm_password.setCustomValidity('');
         }
     }
-
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+
+    let email = document.getElementById("email");
+    let emailBD = ["teste@gmail.com"]
+    let flag = true;
+    console.log("começou")
+    function validateEmail(){
+        for(let i=0; i < emailBD.length; i++){
+            if(email.value === emailBD[i]){
+                email.setCustomValidity("Email já cadastrado")
+                flag = false
+                console.log("igual")
+                break
+            }else{
+                email.setCustomValidity('');
+            }
+            if(flag === true){
+                emailBD.push(email.value)
+                console.log("diferente")
+            }
+        }
+        flag = true
+    }
+    email.onchange = validatePassword;
+    email.onkeyup = validatePassword;
+    console.log("saiu")
 </script>
 </html>

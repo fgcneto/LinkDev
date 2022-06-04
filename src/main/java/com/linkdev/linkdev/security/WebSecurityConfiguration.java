@@ -37,7 +37,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/choose","/add","/developer","/save","/register", "/h2-console/**").permitAll()
+                .antMatchers("/dev","/salvar","/company","/insert","/choose","/save","/register", "/h2-console/**").permitAll()
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
@@ -49,19 +49,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.headers().frameOptions().disable();
-        
-
-        /*
-
-        http.authorizeRequests()
-                .antMatchers( "/h2-console/**","/register", "/developer").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/login")
-                .failureUrl("/login") // página de destino após um login malsucedido
-                .permitAll();
-
-         */
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

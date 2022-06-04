@@ -20,8 +20,15 @@ public class UserService {
         this.userRepositoryJpa = userRepositoryJpa;
     }
 
+    public User getById(Long id){
+        return userRepositoryJpa.getById(id);
+    }
+
     public void save(User user){
         userRepositoryJpa.save(user);
     }
 
+    public void delete(Long id){
+        userRepositoryJpa.deleteById(id);
+    }
 }

@@ -17,11 +17,6 @@ public class HomeController {
         return "admin";
     }
 
-    @RequestMapping("/secure")
-    public String secure(){
-        return "indexDev";
-    }
-
     @RequestMapping("/choose")
     public String choose(){
         return "choose";

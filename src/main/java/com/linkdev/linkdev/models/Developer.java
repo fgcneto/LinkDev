@@ -32,8 +32,8 @@ public class Developer{
     @Column(length = 11)
     private String cpf;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date birth_date;
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
+    private String birth_date; //Mudança de 'Date' para 'String' para conseguir cadastrar data
 
     @Column(length = 100)
     private String contact_email;

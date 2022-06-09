@@ -31,11 +31,11 @@ public class DataLoader implements CommandLineRunner {
 
 
 
-        User user = new User(true,  "admin", passwordEncoder.encode("password"));
+        User user = new User(true,  "admin", passwordEncoder.encode("password"), "admin");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
-        user = new User(true, "user" , passwordEncoder.encode("password"));
+        user = new User(true, "user" , passwordEncoder.encode("password"), "desenvolvedor");
         user.setRoles(Arrays.asList(userRole));
         userRepository.save(user);
 

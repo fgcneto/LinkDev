@@ -31,12 +31,10 @@ public class CompanyControler {
         this.userService = userService;
     }
 
-    @RequestMapping({"/", "/index"})
+    @RequestMapping({"/", "/indexDev"})
     public String getPageUsuario(Model model){
         List<Company> companyList = service.findAll();
         model.addAttribute("company", companyList);
-        //User aux = new User();  //
-        //aux = userService.getById(); // devolver nome do user na tela
         return "indexDev";
     }
 

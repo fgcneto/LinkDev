@@ -17,6 +17,8 @@
                 <div class="card-body p-4 p-sm-5">
                     <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Cadastro Usuário</h2>
                     <form method="post" th:object="${user}" th:action="@{/save}" enctype="multipart/form-data">
+                        Tipo * : <input class="form-control" type="text" th:field="*{tipoUser}" minlength="3" required> <br/>
+                        <p th:if="${#fields.hasErrors('tipoUser')}" th:errors="*{tipoUser}" th:required="required"></p>
                         Nome de usuário * : <input class="form-control" type="text" th:field="*{username}" minlength="3" required> <br/>
                         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:required="required"></p>
                         Senha * : <input class="form-control" type="password" id="password" pattern="^(?=.*\d).{4,8}$"  th:field="*{password}" placeholder="4-8 caracter" required> <br/>

@@ -32,9 +32,4 @@ public class Company{
 
     @Column
     private String socialMidia;
-
-    @OneToOne
-    @JoinColumn(name = "userTipo")
-    private User tipoUser;
-
 }

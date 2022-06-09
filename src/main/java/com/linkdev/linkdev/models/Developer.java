@@ -43,8 +43,4 @@ public class Developer{
 
     @Column
     private String resume;
-
-    @OneToOne
-    @JoinColumn(name = "userTipo")
-    private User tipoUser;
 }

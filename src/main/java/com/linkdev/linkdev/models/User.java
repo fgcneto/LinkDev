@@ -23,6 +23,9 @@ public class User {
     @Column(name = "enable")
     private boolean enabled = true;
 
+    @Column
+    private String tipoUser;
+
     @Column(name = "username")
     private String username;
 
@@ -34,10 +37,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(boolean enabled, String username , String password) {
+    public User(boolean enabled, String username , String password, String tipoUser) {
         this.enabled = enabled;
         this.username = username;
         this.password = password;
+        this.tipoUser = tipoUser;
     }
 
     public long getId() {

@@ -36,7 +36,6 @@ public class CompanyControler {
         this.userService = userService;
     }
 
-<<<<<<< HEAD
     @RequestMapping({"/", "/index"})
     public String getPageUsuario(Model model,  HttpServletRequest request, HttpServletResponse response){
         List<Company> companyList = service.findAll();
@@ -47,12 +46,6 @@ public class CompanyControler {
         Cookie biscoito = new Cookie("usuario", dataFormatada);
         biscoito.setMaxAge(86400);
         response.addCookie(biscoito);
-=======
-    @RequestMapping({"/", "/indexDev"})
-    public String getPageUsuario(Model model){
-        List<Company> companyList = service.findAll();
-        model.addAttribute("company", companyList);
->>>>>>> 9267978f8269298c718aee242fd8bfcf3eb49f34
         return "indexDev";
     }
 

@@ -8,8 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import javax.servlet.http.Cookie;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 //@RestController
@@ -32,11 +37,15 @@ public class CompanyControler {
     }
 
     @RequestMapping({"/", "/index"})
-    public String getPageUsuario(Model model){
+    public String getPageUsuario(Model model,  HttpServletRequest request, HttpServletResponse response){
         List<Company> companyList = service.findAll();
         model.addAttribute("company", companyList);
-        //User aux = new User();  //
-        //aux = userService.getById(); // devolver nome do user na tela
+        Date dataDaSessao = new Date();
+        var dataDoAcesso = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        var dataFormatada = dataDoAcesso.format(dataDaSessao);
+        Cookie biscoito = new Cookie("usuario", dataFormatada);
+        biscoito.setMaxAge(86400);
+        response.addCookie(biscoito);
         return "indexDev";
     }
 

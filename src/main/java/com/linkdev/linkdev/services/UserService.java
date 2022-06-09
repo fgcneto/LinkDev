@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -20,12 +21,16 @@ public class UserService {
         this.userRepositoryJpa = userRepositoryJpa;
     }
 
+    public List<User> findAll(){
+        return userRepositoryJpa.findAll();
+    }
+
     public User getById(Long id){
         return userRepositoryJpa.getById(id);
     }
 
-    public void save(User user){
-        userRepositoryJpa.save(user);
+    public User save(User user){
+        return userRepositoryJpa.save(user);
     }
 
     public void delete(Long id){

@@ -3,6 +3,7 @@ package com.linkdev.linkdev.controllers;
 import com.linkdev.linkdev.models.Developer;
 import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.services.DeveloperService;
+import com.linkdev.linkdev.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,19 +28,28 @@ public class DeveloperController {
         this.developerService = developerService;
     }
 
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("/dev")
     public String getFormDeveloper(Model model){
+        //User user = new User();
+        //model.addAttribute("user",user);
         Developer dev = new Developer();
         model.addAttribute("dev",dev);
         return "dev";
     }
 
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
-    public String doSaveDeveloper(@ModelAttribute @Valid Developer dev, Errors errors){
+    public String doSaveDeveloper(@ModelAttribute @Valid Developer dev, User user, Errors errors){
         if(errors.hasErrors()){
             return "redirect:/dev";
         }else{
+            //userService.save(user);
             developerService.add(dev);
             return "redirect:/register";
         }

@@ -22,7 +22,7 @@
                     <a class="nav-link" href=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""></a>
+                    <a class="nav-link" href="/">Criar Vaga</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">sair</a>
@@ -47,6 +47,7 @@
                     <th scope="col" >email de contato</th>
                     <th scope="col" >link do site</th>
                     <th scope="col" >rede social</th>
+                    <th scope="col" >vagas </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,6 +57,7 @@
                     <td th:text="${company.contact_email}">email de contato</td>
                     <td th:text="${company.linkSite}">link do site</td>
                     <td th:text="${company.socialMidia}">rede social</td>
+                    <td><a href="/"> Ver vagas</a></td>
                 </tr>
                 </tbody>
             </table>

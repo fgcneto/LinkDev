@@ -22,4 +22,9 @@ public class HomeController {
         return "choose";
     }
 
+    @RequestMapping("/main")
+    public String main(){
+        return "main";
+    }
+
 }

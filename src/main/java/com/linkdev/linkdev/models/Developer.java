@@ -43,4 +43,18 @@ public class Developer{
 
     @Column
     private String resume;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Developer(String nameDev, String last_name, String cpf, String birth_date, String contact_email, String telephone, User user) {
+        this.nameDev = nameDev;
+        this.last_name = last_name;
+        this.cpf = cpf;
+        this.birth_date = birth_date;
+        this.contact_email = contact_email;
+        this.telephone = telephone;
+        this.user = user;
+    }
 }

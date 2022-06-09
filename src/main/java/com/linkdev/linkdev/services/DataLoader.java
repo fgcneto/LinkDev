@@ -1,7 +1,9 @@
 package com.linkdev.linkdev.services;
 
+import com.linkdev.linkdev.models.Developer;
 import com.linkdev.linkdev.models.Role;
 import com.linkdev.linkdev.models.User;
+import com.linkdev.linkdev.repository.DeveloperRepository;
 import com.linkdev.linkdev.repository.RoleRepository;
 import com.linkdev.linkdev.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    DeveloperRepository developerRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -31,13 +36,16 @@ public class DataLoader implements CommandLineRunner {
 
 
 
-        User user = new User(true,  "admin", passwordEncoder.encode("password"), "admin");
-        user.setRoles(Arrays.asList(adminRole));
-        userRepository.save(user);
+        User userAdmin = new User(true,  "admin", passwordEncoder.encode("password"));
+        userAdmin.setRoles(Arrays.asList(adminRole));
+        userRepository.save(userAdmin);
 
-        user = new User(true, "user" , passwordEncoder.encode("password"), "desenvolvedor");
+        User user = new User(true, "user" , passwordEncoder.encode("password"));
         user.setRoles(Arrays.asList(userRole));
         userRepository.save(user);
+
+        Developer dev = new Developer("Fulano", "Da Silva", "12345678902", "05-05-1981", "ig@ig.com.br","8888-8888", user);
+        developerRepository.save(dev);
 
     }
 }

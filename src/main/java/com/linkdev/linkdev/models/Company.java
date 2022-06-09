@@ -32,4 +32,9 @@ public class Company{
 
     @Column
     private String socialMidia;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

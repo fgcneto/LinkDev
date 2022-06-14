@@ -13,11 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "companies")
-public class Company {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Company extends User {
 
     @Column
     private String nameCompany;
@@ -34,15 +30,13 @@ public class Company {
     @Column
     private String socialMidia;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    private User user;
-
     @OneToMany(mappedBy = "company")
     private List<JobOpportunity> jobOpportunityList ;
 
     public Company(String username, String password, String nameCompany,
                    String cnpj, String contact_email, String linkSite,
                    String socialMidia) {
+        super(username, password);
         this.nameCompany = nameCompany;
         this.cnpj = cnpj;
         this.contact_email = contact_email;

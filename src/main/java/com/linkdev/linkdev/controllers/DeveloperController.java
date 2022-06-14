@@ -37,8 +37,6 @@ public class DeveloperController {
 
     @RequestMapping("/dev")
     public String getFormDeveloper(Model model){
-        User user = new User();
-        model.addAttribute("user",user);
         Developer dev = new Developer();
         model.addAttribute("dev",dev);
         return "dev";

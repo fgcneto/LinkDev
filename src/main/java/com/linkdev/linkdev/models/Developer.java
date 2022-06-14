@@ -13,11 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "developers")
-public class Developer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Developer extends User {
 
     @Column
     private String nameDev;
@@ -40,12 +36,10 @@ public class Developer {
     @Column
     private String resume;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    private User user;
-
     public Developer(String username, String password, String nameDev,
                      String last_name, String cpf, String birth_date,
                      String contact_email, String telephone) {
+        super(username, password);
         this.nameDev = nameDev;
         this.last_name = last_name;
         this.cpf = cpf;

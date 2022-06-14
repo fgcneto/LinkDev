@@ -36,37 +36,40 @@ public class DataLoader implements CommandLineRunner {
         Role userRoleCompany = roleRepository.findByRole("COMPANY");
         Role userRoleDeveloper = roleRepository.findByRole("DEVELOPER");
 
-
-        User userDev = new User("dev", passwordEncoder.encode("password"));
-        userDev.setRoles(Arrays.asList(userRoleDeveloper));
-        userRepository.save(userDev);
-
-        User userCompany = new User("company" , passwordEncoder.encode("password"));
-        userCompany.setRoles(Arrays.asList(userRoleCompany));
-        userRepository.save(userCompany);
-
-        Developer dev = new Developer("fgcneto", "password",
-                "Francisco","Da Silva", "12345678902", "05-05-1981",
+        Developer devNeto = new Developer("fgcneto", passwordEncoder.encode("password"),
+                "Neto","Da Silva", "12345678902", "05-05-1981",
                 "ig@ig.com.br","8888-8888");
-        dev.setUser(userDev);
-        developerRepository.save(dev);
+        devNeto.setRoles(Arrays.asList(userRoleDeveloper));
+        developerRepository.save(devNeto);
 
-        Company company = new Company("microsoft", "password", "Microsoft",
+        Developer devClara = new Developer("clara", passwordEncoder.encode("password"),
+                "Clara","Da Silva", "12345678902", "05-05-2000",
+                "ig@ig.com.br","8888-8888");
+        devClara.setRoles(Arrays.asList(userRoleDeveloper));
+        developerRepository.save(devClara);
+
+        Company companyMicrosoft = new Company("loginmicrosft", passwordEncoder.encode("password"), "Microsoft",
                 "12345679", "contato@microsoft.com", "www.microsoft.com",
-                "@micrsoft");
-        company.setUser(userCompany);
-        companyRepository.save(company);
+                "@microsoft");
+        companyMicrosoft.setRoles(Arrays.asList(userRoleCompany));
+        companyRepository.save(companyMicrosoft);
+
+        Company companyGoogle = new Company("google", passwordEncoder.encode("password"), "Google",
+                "12345679", "contato@google.com", "www.google.com",
+                "@google");
+        companyGoogle.setRoles(Arrays.asList(userRoleCompany));
+        companyRepository.save(companyGoogle);
 
         JobOpportunity jobOpportunity = new JobOpportunity(
                 "Vaga Backend Python", "CLT",
                 "Densenvolvedor Python usando Django");
-        jobOpportunity.setCompany(company);
+        jobOpportunity.setCompany(companyGoogle);
         jobOpportunityRepository.save(jobOpportunity);
 
         JobOpportunity jobOpportunity2 = new JobOpportunity(
                 "Vaga Backend Java", "CLT",
                 "Densenvolvedor Java usando Spring Boot");
-        jobOpportunity2.setCompany(company);
+        jobOpportunity2.setCompany(companyMicrosoft);
         jobOpportunityRepository.save(jobOpportunity2);
 
     }

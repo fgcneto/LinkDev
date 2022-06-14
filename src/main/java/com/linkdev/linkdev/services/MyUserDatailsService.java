@@ -32,7 +32,8 @@ public class MyUserDatailsService implements UserDetailsService {
             if(user==null){
                 throw new UsernameNotFoundException(username);
             }
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthories(user));
+            return new org.springframework.security.core.userdetails.User(
+                    user.getUsername(), user.getPassword(), getAuthories(user));
         } catch (Exception e) {
             throw new UsernameNotFoundException("Usuário não Encontrado!");
         }

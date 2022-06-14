@@ -7,21 +7,17 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "developers")
-public class Developer{
+public class Developer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idDev;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String nameDev;
@@ -44,17 +40,17 @@ public class Developer{
     @Column
     private String resume;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.MERGE)
     private User user;
 
-    public Developer(String nameDev, String last_name, String cpf, String birth_date, String contact_email, String telephone, User user) {
+    public Developer(String username, String password, String nameDev,
+                     String last_name, String cpf, String birth_date,
+                     String contact_email, String telephone) {
         this.nameDev = nameDev;
         this.last_name = last_name;
         this.cpf = cpf;
         this.birth_date = birth_date;
         this.contact_email = contact_email;
         this.telephone = telephone;
-        this.user = user;
     }
 }

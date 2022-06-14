@@ -1,8 +1,5 @@
 package com.linkdev.linkdev;
 
-import com.linkdev.linkdev.models.Company;
-import com.linkdev.linkdev.models.Developer;
-import com.linkdev.linkdev.services.CompanyService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

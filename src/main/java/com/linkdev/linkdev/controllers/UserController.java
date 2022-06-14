@@ -1,5 +1,6 @@
 package com.linkdev.linkdev.controllers;
 
+import com.linkdev.linkdev.models.Developer;
 import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class UserController {
 
     @RequestMapping("/register")
     public String getFormRegister(Model model){
-        User user = new User();
-        model.addAttribute("user",user);
+        Developer developer = new Developer();
+        model.addAttribute("user",developer);
         return "register";
     }
 

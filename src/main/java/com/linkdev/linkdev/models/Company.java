@@ -9,14 +9,13 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "companies")
-public class Company{
+public class Company {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long idCompany;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String nameCompany;
@@ -33,8 +32,16 @@ public class Company{
     @Column
     private String socialMidia;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.MERGE)
     private User user;
 
+    public Company(String username, String password, String nameCompany,
+                   String cnpj, String contact_email, String linkSite,
+                   String socialMidia) {
+        this.nameCompany = nameCompany;
+        this.cnpj = cnpj;
+        this.contact_email = contact_email;
+        this.linkSite = linkSite;
+        this.socialMidia = socialMidia;
+    }
 }

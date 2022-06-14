@@ -8,12 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.util.Collection;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
 public class User {
 
     @Id
@@ -34,14 +32,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    @OneToOne(mappedBy = "user")
-    private Developer developer;
-
-    @OneToOne(mappedBy = "user")
-    private Company company;
-
-    public User(boolean enabled, String username , String password) {
-        this.enabled = enabled;
+    public User(String username , String password) {
         this.username = username;
         this.password = password;
     }

@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,6 +37,9 @@ public class Company {
     @OneToOne(cascade = CascadeType.MERGE)
     private User user;
 
+    @OneToMany(mappedBy = "company")
+    private List<JobOpportunity> jobOpportunityList ;
+
     public Company(String username, String password, String nameCompany,
                    String cnpj, String contact_email, String linkSite,
                    String socialMidia) {
@@ -43,5 +48,13 @@ public class Company {
         this.contact_email = contact_email;
         this.linkSite = linkSite;
         this.socialMidia = socialMidia;
+    }
+
+    public List<JobOpportunity> getJobOpportunityList() {
+        return jobOpportunityList;
+    }
+
+    public void setJobOpportunityList(List<JobOpportunity> jobOpportunityList) {
+        this.jobOpportunityList = jobOpportunityList;
     }
 }

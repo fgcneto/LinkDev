@@ -1,13 +1,7 @@
 package com.linkdev.linkdev.services;
 
-import com.linkdev.linkdev.models.Company;
-import com.linkdev.linkdev.models.Developer;
-import com.linkdev.linkdev.models.Role;
-import com.linkdev.linkdev.models.User;
-import com.linkdev.linkdev.repository.CompanyRepository;
-import com.linkdev.linkdev.repository.DeveloperRepository;
-import com.linkdev.linkdev.repository.RoleRepository;
-import com.linkdev.linkdev.repository.UserRepository;
+import com.linkdev.linkdev.models.*;
+import com.linkdev.linkdev.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,11 +20,13 @@ public class DataLoader implements CommandLineRunner {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    DeveloperRepository developerRepository;
+    private DeveloperRepository developerRepository;
 
     @Autowired
-    CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
 
+    @Autowired
+    private JobOpportunityRepository jobOpportunityRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -60,6 +56,18 @@ public class DataLoader implements CommandLineRunner {
                 "@micrsoft");
         company.setUser(userCompany);
         companyRepository.save(company);
+
+        JobOpportunity jobOpportunity = new JobOpportunity(
+                "Vaga Backend Python", "CLT",
+                "Densenvolvedor Python usando Django");
+        jobOpportunity.setCompany(company);
+        jobOpportunityRepository.save(jobOpportunity);
+
+        JobOpportunity jobOpportunity2 = new JobOpportunity(
+                "Vaga Backend Java", "CLT",
+                "Densenvolvedor Java usando Spring Boot");
+        jobOpportunity2.setCompany(company);
+        jobOpportunityRepository.save(jobOpportunity2);
 
     }
 }

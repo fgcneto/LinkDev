@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -62,14 +63,12 @@ public class DataLoader implements CommandLineRunner {
 
         JobOpportunity jobOpportunity = new JobOpportunity(
                 "Vaga Backend Python", "CLT",
-                "Densenvolvedor Python usando Django");
-        jobOpportunity.setCompany(companyGoogle);
+                "Densenvolvedor Python usando Django", companyGoogle);
         jobOpportunityRepository.save(jobOpportunity);
 
         JobOpportunity jobOpportunity2 = new JobOpportunity(
                 "Vaga Backend Java", "CLT",
-                "Densenvolvedor Java usando Spring Boot");
-        jobOpportunity2.setCompany(companyMicrosoft);
+                "Densenvolvedor Java usando Spring Boot", companyMicrosoft);
         jobOpportunityRepository.save(jobOpportunity2);
 
     }

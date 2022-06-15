@@ -43,55 +43,13 @@ public class DeveloperController {
     }
 
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
-    public String doSaveDeveloper(@ModelAttribute @Valid Developer dev, User user, Errors errors){
+    public String doSaveDeveloper(@ModelAttribute @Valid Developer dev, Errors errors){
         if(errors.hasErrors()){
             return "redirect:/dev";
         }else{
-            //userService.save(user);
             developerService.add(dev);
-            return "redirect:/register";
+            return "redirect:/login";
         }
 
     }
-
-
-/*
-    @GetMapping
-    public List<Developer> listAll(){
-        return developerService.findAll();
-    }
-
-    @GetMapping(path = {"/{id}"})
-    public ResponseEntity<Developer> getOne(@PathVariable Long id) {
-        Optional<Developer> developer = developerService.findByid(id);
-        if(developer.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }else {
-            Developer record =  developer.get();
-            return ResponseEntity.ok().body(record);
-        }
-    }
-
-    @PutMapping(path = {"/{id}"})
-    public ResponseEntity<Developer> Entityupdate(@PathVariable Long id, @RequestBody Developer developer) {
-        return developerService.findByid(id).map( record -> {
-            developerService.add(developer);
-            return ResponseEntity.ok().body(developer);
-        }).orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public Developer insert(@RequestBody Developer developer) {
-        return developerService.add(developer);
-    }
-
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<?> delete (@PathVariable Long id) {
-        return developerService.findByid(id).map(record ->{
-             developerService.delete(record);
-            return ResponseEntity.status(202).build();
-        }).orElse(ResponseEntity.notFound().build());
-    }
- */
-
 }

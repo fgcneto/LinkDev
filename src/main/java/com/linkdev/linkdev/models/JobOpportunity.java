@@ -28,9 +28,10 @@ public class JobOpportunity {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    public JobOpportunity(String title, String typeOfContract, String description) {
+    public JobOpportunity(String title, String typeOfContract, String description, Company company) {
         this.title = title;
         this.typeOfContract = typeOfContract;
         this.description = description;
+        this.company = company;
     }
 }

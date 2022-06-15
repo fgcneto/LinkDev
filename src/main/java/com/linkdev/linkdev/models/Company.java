@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,7 @@ public class Company extends User {
     private String socialMidia;
 
     @OneToMany(mappedBy = "company")
-    private List<JobOpportunity> jobOpportunityList ;
+    private Collection<JobOpportunity> jobOpportunityList = new LinkedHashSet<JobOpportunity>();;
 
     public Company(String username, String password, String nameCompany,
                    String cnpj, String contact_email, String linkSite,
@@ -44,11 +45,4 @@ public class Company extends User {
         this.socialMidia = socialMidia;
     }
 
-    public List<JobOpportunity> getJobOpportunityList() {
-        return jobOpportunityList;
-    }
-
-    public void setJobOpportunityList(List<JobOpportunity> jobOpportunityList) {
-        this.jobOpportunityList = jobOpportunityList;
-    }
 }

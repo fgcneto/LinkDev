@@ -30,7 +30,7 @@ public class Developer extends User {
     @Column(length = 100)
     private String contact_email;
 
-    @Column(length = 9)
+    @Column(length = 11)
     private String telephone;
 
     @Column

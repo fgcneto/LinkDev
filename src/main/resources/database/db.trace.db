@@ -1,0 +1,6 @@
+2022-06-14 21:08:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CPF VARCHAR(11)": "'139.898.544-96' (14)"; SQL statement:
+insert into developers (enable, password, username, birth_date, contact_email, cpf, last_name, name_dev, resume, telephone, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2022-06-14 21:09:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TELEPHONE VARCHAR(9)": "'84987197954' (11)"; SQL statement:
+insert into developers (enable, password, username, birth_date, contact_email, cpf, last_name, name_dev, resume, telephone, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]

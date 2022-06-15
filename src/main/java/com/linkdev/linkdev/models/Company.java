@@ -1,14 +1,12 @@
 package com.linkdev.linkdev.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.List;
+
 
 @Entity
 @Data

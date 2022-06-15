@@ -18,6 +18,11 @@
           <h2 class="card-title text-center mb-5 fw-light fs-5"><strong>LinkDev</strong> - Continue seu cadastro como Empresa</h2>
           <!--/*@thymesVar id="developer" type=""*/-->
           <form  method="post" th:object="${company}" th:action="@{/insert}" enctype="multipart/form-data" >
+            Nome de usuário * : <input class="form-control" type="text" th:field="*{username}" minlength="3" required> <br/>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:required="required"></p>
+            Senha * : <input class="form-control" type="password" id="password" pattern="^(?=.*\d).{4,8}$"  th:field="*{password}" placeholder="4-8 caracter" required> <br/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:required="required"></p>
+            Confirmar senha * : <input class="form-control" type="password" id="confirm_password" required> <br/>
             Nome da Empresa * : <input class="form-control" type="text" th:field="*{nameCompany}" required> <br/>
             <p th:if="${#fields.hasErrors('nameCompany')}" th:errors="*{nameCompany}" th:required="required"></p>
             CNPJ * :<input class="form-control" type="text" th:field="*{cnpj}" required> <br/>
@@ -40,4 +45,45 @@
 </div>
 </body>
 <div th:include="fragments/commons :: foot"></div>
+
+<script>
+  let password = document.getElementById("password")
+          , confirm_password = document.getElementById("confirm_password");
+
+  function validatePassword(){
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Senhas diferentes!");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+
+  let email = document.getElementById("email");
+  let emailBD = ["teste@gmail.com"]
+  let flag = true;
+  console.log("começou")
+  function validateEmail(){
+    for(let i=0; i < emailBD.length; i++){
+      if(email.value === emailBD[i]){
+        email.setCustomValidity("Email já cadastrado")
+        flag = false
+        console.log("igual")
+        break
+      }else{
+        email.setCustomValidity('');
+      }
+      if(flag === true){
+        emailBD.push(email.value)
+        console.log("diferente")
+      }
+    }
+    flag = true
+  }
+  email.onchange = validatePassword;
+  email.onkeyup = validatePassword;
+  console.log("saiu")
+</script>
+
 </html>

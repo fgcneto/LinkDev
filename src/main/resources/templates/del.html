@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" >
+<head>
+  <meta charset="utf-8" />
+  <title>Del dev</title>
+</head>
+<body style="background: #007bff; background: linear-gradient(to right, #0062E6, #33AEFF);">
+<div th:include="fragments/commons :: linkBootstrap"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="/">LinkDev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5" style="border-radius: 10px">
+    <div class="card-body p-5">
+      <h1 class="fw-light">LinkDev</h1>
+      <h3> Lista de Devs</h3>
+      <p class="lead">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">username</th>
+          <th scope="col" >nome</th>
+          <th scope="col" >cpf</th>
+          <th scope="col" >sobrenome</th>
+          <th scope="col" >telefone</th>
+          <th scope="col" >data de nascimento</th>
+          <th scope="col" >email de contato</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dev : ${dev}" scope="row">
+          <td th:text="${dev.username}">username</td>
+          <td th:text="${dev.nameDev}">nome</td>
+          <td th:text="${dev.cpf}">cpf</td>
+          <td th:text="${dev.last_name}">sobrenome</td>
+          <td th:text="${dev.telephone}">telefone</td>
+          <td th:text="${dev.birth_date}">data de nascimento</td>
+          <td th:text="${dev.contact_email}">email de contato</td>
+          <td><a th:href="@{'/delet/' + ${dev.id}}">Deletar </a></td>
+        </tr>
+        </tbody>
+      </table>
+      </p>
+      <p class="lead"></p>
+      <div style="height: 700px"></div>
+      <p class="lead mb-0"></p>
+    </div>
+  </div>
+</div>
+</body>
+<div th:include="fragments/commons :: foot"></div>
+</html>

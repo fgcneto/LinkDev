@@ -22,8 +22,8 @@ public class DeveloperService {
         return developerRepository.save(developer);
     }
 
-    public void delete(Developer developer) {
-        developerRepository.delete(developer);
+    public void delete(Long id) {
+        developerRepository.deleteById(id);
     }
 
     public Optional<Developer> findByid(Long id) {

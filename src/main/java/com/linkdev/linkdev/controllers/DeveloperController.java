@@ -1,6 +1,8 @@
 package com.linkdev.linkdev.controllers;
 
+import com.linkdev.linkdev.models.Company;
 import com.linkdev.linkdev.models.Developer;
+import com.linkdev.linkdev.models.JobOpportunity;
 import com.linkdev.linkdev.models.User;
 import com.linkdev.linkdev.services.DeveloperService;
 import com.linkdev.linkdev.services.UserService;
@@ -11,7 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +42,13 @@ public class DeveloperController {
         this.userService = userService;
     }
 
+    @RequestMapping({"/del"})
+    public String getPageDev(Model model){
+        List<Developer> developerList = developerService.findAll();
+        model.addAttribute("dev", developerList);
+        return "del";
+    }
+
     @RequestMapping("/dev")
     public String getFormDeveloper(Model model){
         Developer dev = new Developer();
@@ -51,5 +65,11 @@ public class DeveloperController {
             return "redirect:/login";
         }
 
+    }
+
+    @RequestMapping("/delet/{id}")
+    public String doDelet(@PathVariable(name = "id") Long id){
+        developerService.delete(id);
+        return "redirect:/";
     }
 }

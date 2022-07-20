@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" >
+<head>
+  <meta charset="utf-8" />
+  <title>Editar</title>
+</head>
+<body style="background: #007bff; background: linear-gradient(to right, #0062E6, #33AEFF);">
+<div th:include="fragments/commons :: linkBootstrap"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="/">LinkDev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Voltar</a>
+        </li>
+        <li class="nav-item">
+          <div th:if="${param.error}">
+            <div class="alert alert-danger">Usuário não permitido!</div>
+          </div>
+          <a class="nav-link" href="/job">Criar Vaga</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5" style="border-radius: 10px">
+    <div class="card-body p-5">
+      <h1 class="fw-light">LinkDev</h1>
+      <h3> Lista de Empresas</h3>
+      <p class="lead">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">nome</th>
+          <th scope="col" >cnpj</th>
+          <th scope="col" >email de contato</th>
+          <th scope="col" >link do site</th>
+          <th scope="col" >rede social</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="company : ${company}" scope="row">
+          <td th:text="${company.nameCompany}">nome</td>
+          <td th:text="${company.cnpj}">cnpj</td>
+          <td th:text="${company.contact_email}">email de contato</td>
+          <td th:text="${company.linkSite}">link do site</td>
+          <td th:text="${company.socialMidia}">rede social</td>
+          <td><a th:href="@{'/deletar/' + ${company.id}}">Deletar </a></td>
+        </tr>
+        </tbody>
+      </table>
+      <h3> Lista de Vagas</h3>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">nome da vaga</th>
+          <th scope="col" >tipo do contrato</th>
+          <th scope="col" >descrição</th>
+          <th scope="col" >empresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vaga : ${vaga}">
+          <td th:text="${vaga.title}">nome da vaga</td>
+          <td th:text="${vaga.typeOfContract}">tipo do contrato</td>
+          <td th:text="${vaga.description}">descrição</td>
+          <td th:text="${vaga.getCompany()}">empresa</td>
+          <td><a th:href="@{'/delete/' + ${vaga.id}}">Deletar </a></td>
+        </tr>
+        </tbody>
+      </table>
+
+      </p>
+      <p class="lead"></p>
+      <div style="height: 700px"></div>
+      <p class="lead mb-0"></p>
+    </div>
+  </div>
+</div>
+</body>
+<div th:include="fragments/commons :: foot"></div>
+</html>

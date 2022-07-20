@@ -78,4 +78,10 @@ public class CompanyControler {
 
     }
 
+    @RequestMapping("/deletar/{id}")
+    public String doDeletar(@PathVariable(name = "id") Long id){
+        service.delete(id);
+        return "redirect:/";
+    }
+
 }

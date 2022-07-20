@@ -19,10 +19,16 @@
                     <a class="nav-link" href=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""></a>
+                    <a class="nav-link" href="/editar">Editar</a>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Usuário não permitido!</div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Criar Vaga</a>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Usuário não permitido!</div>
+                    </div>
+                    <a class="nav-link" href="/job">Criar Vaga</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">sair</a>

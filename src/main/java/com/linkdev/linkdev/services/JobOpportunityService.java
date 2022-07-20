@@ -24,8 +24,8 @@ public class JobOpportunityService {
         return jobOpportunityRepository.save(jobOpportunity);
     }
 
-    public void delete(JobOpportunity jobOpportunity) {
-        jobOpportunityRepository.delete(jobOpportunity);
+    public void delete(Long id) {
+        jobOpportunityRepository.deleteById(id);
     }
 
     public Optional<JobOpportunity> findByid(Long id) {

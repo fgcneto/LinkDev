@@ -36,7 +36,9 @@ public class JobOpportunity {
     }
 
     public String getCompany() {
+        if(company == null){
+            return "-";
+        }
         return company.getNameCompany();
     }
-
 }

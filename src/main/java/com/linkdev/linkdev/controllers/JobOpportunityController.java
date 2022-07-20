@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,12 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class JobOpportunityController {
 
     private JobOpportunityService jobOpportunityService;
     private CompanyService companyService;
+    private Company company;
 
     @Autowired
     public void setJobOpportunityService(JobOpportunityService jobOpportunityService) {
@@ -46,9 +49,24 @@ public class JobOpportunityController {
             return "redirect:/job";
         }else{
             jobOpportunityService.add(jobOpportunity);
-            return "redirect:/indexDev";
+            return "redirect:/";
         }
 
+    }
+
+    @RequestMapping("/editar")
+    public String getEditar(Model model) {
+        List<Company> companyList = companyService.findAll();
+        model.addAttribute("company", companyList);
+        List<JobOpportunity> jobOpportunityList = jobOpportunityService.findAll();
+        model.addAttribute("vaga", jobOpportunityList);
+        return "editar";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String doDelete(@PathVariable(name = "id") Long id){
+        jobOpportunityService.delete(id);
+        return "redirect:/";
     }
 
 }

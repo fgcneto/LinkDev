@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" >
+<head>
+    <meta charset="utf-8" />
+    <title>Vaga</title>
+</head>
+
+<body style="background: #007bff; background: linear-gradient(to right, #0062E6, #33AEFF);">
+<div th:include="fragments/commons :: linkBootstrap"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+        <a class="navbar-brand" href="/">LinkDev</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href=""></a>
+                </li>
+                <li class="nav-item">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Usuário não permitido!</div>
+                    </div>
+                    <a class="nav-link" href="/editar">Editar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">voltar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content -->
+<div class="container">
+    <div class="card border-0 shadow my-5" style="border-radius: 10px">
+        <div class="card-body p-5">
+            <h1 class="fw-light">LinkDev</h1>
+            <h3> Cadastrar Vaga</h3>
+            <p class="lead">
+            <form  method="post" th:object="${job}" th:action="@{/addjob}" enctype="multipart/form-data" >
+                Nome da vaga * : <input class="form-control" type="text" th:field="*{title}" minlength="3" required> <br/>
+                <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" th:required="required"></p>
+                Tipo do contrato * : <input class="form-control" type="text" th:field="*{typeOfContract}" minlength="3" required> <br/>
+                <p th:if="${#fields.hasErrors('typeOfContract')}" th:errors="*{typeOfContract}" th:required="required"></p>
+                Descrição * : <input class="form-control" type="text" th:field="*{description}" minlength="3" required> <br/>
+                <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:required="required"></p>
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-login text-uppercase fw-bold" id="btn" type="submit">ENVIAR</button>
+                </div>
+            </form>
+            </p>
+            <p class="lead"></p>
+            <div style="height: 700px"></div>
+            <p class="lead mb-0"></p>
+        </div>
+    </div>
+</div>
+</body>
+<div th:include="fragments/commons :: foot"></div>
+</html>

@@ -34,4 +34,9 @@ public class JobOpportunity {
         this.description = description;
         this.company = company;
     }
+
+    public String getCompany() {
+        return company.getNameCompany();
+    }
+
 }

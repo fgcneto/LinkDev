@@ -1,7 +1,9 @@
 package com.linkdev.linkdev.controllers;
 
 import com.linkdev.linkdev.models.Company;
+import com.linkdev.linkdev.models.JobOpportunity;
 import com.linkdev.linkdev.services.CompanyService;
+import com.linkdev.linkdev.services.JobOpportunityService;
 import com.linkdev.linkdev.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ public class CompanyControler {
 
     private CompanyService service;
     private UserService userService;
+    private JobOpportunityService jobOpportunityService;
 
     @Autowired
     public void setService(CompanyService service) {
@@ -36,10 +39,17 @@ public class CompanyControler {
         this.userService = userService;
     }
 
+    @Autowired
+    public void setJobOpportunityService(JobOpportunityService jobOpportunityService) {
+        this.jobOpportunityService = jobOpportunityService;
+    }
+
     @RequestMapping({"/", "/index"})
     public String getPageUsuario(Model model,  HttpServletRequest request, HttpServletResponse response){
         List<Company> companyList = service.findAll();
         model.addAttribute("company", companyList);
+        List<JobOpportunity> jobOpportunityList = jobOpportunityService.findAll();
+        model.addAttribute("vaga", jobOpportunityList);
         Date dataDaSessao = new Date();
         var dataDoAcesso = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         var dataFormatada = dataDoAcesso.format(dataDaSessao);

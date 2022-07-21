@@ -14,9 +14,9 @@ import javax.persistence.*;
 @Table(name = "skills")
 public class Skill {
 
+
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

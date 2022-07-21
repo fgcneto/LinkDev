@@ -12,9 +12,9 @@ import javax.persistence.*;
 @Table(name = "jobopportunities")
 public class JobOpportunity {
 
+
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(length = 250)

@@ -16,9 +16,9 @@ import java.util.Collection;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
 
+
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "enable")
